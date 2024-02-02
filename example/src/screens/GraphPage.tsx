@@ -4,6 +4,7 @@ import { LineGraph } from 'react-native-graph'
 import StaticSafeAreaInsets from 'react-native-static-safe-area-insets'
 import type { GraphRange } from '../../../src/LineGraphProps'
 import { SelectionDot } from '../components/CustomSelectionDot'
+import { IndicatorDot } from '../components/CustomIndicatorDot'
 import { Toggle } from '../components/Toggle'
 import {
   generateRandomGraphData,
@@ -26,12 +27,13 @@ export function GraphPage() {
   const [enableFadeInEffect, setEnableFadeInEffect] = useState(false)
   const [enableCustomSelectionDot, setEnableCustomSelectionDot] =
     useState(false)
+  const [enableCustomIndicator, setEnableCustomIndicator] = useState(true)
   const [enableGradient, setEnableGradient] = useState(false)
   const [enableRange, setEnableRange] = useState(false)
-  const [enableIndicator, setEnableIndicator] = useState(false)
-  const [enableDotValueX, setEnableDotValueX] = useState(true)
+  const [enableIndicator, setEnableIndicator] = useState(true)
+  const [enableDotValueX, setEnableDotValueX] = useState(false)
   const [enableFadeoutValueX, setEnableFadeoutValueX] = useState(false)
-  const [indicatorPulsating, setIndicatorPulsating] = useState(false)
+  const [indicatorPulsating, setIndicatorPulsating] = useState(true)
 
   const [points, setPoints] = useState(POINTS)
 
@@ -98,6 +100,7 @@ export function GraphPage() {
         enableFadeInMask={enableFadeInEffect}
         onGestureStart={() => hapticFeedback('impactLight')}
         SelectionDot={enableCustomSelectionDot ? SelectionDot : undefined}
+        IndicatorComponent={enableCustomIndicator ? IndicatorDot : undefined}
         range={range}
         selectionDotValueX={enableDotValueX ? points.length / 2 : undefined}
         fadeoutValueX={enableFadeoutValueX ? points.length / 2 : undefined}
@@ -157,6 +160,11 @@ export function GraphPage() {
           title="Enable Indicator:"
           isEnabled={enableIndicator}
           setIsEnabled={setEnableIndicator}
+        />
+        <Toggle
+          title="Enable Custom Indicator:"
+          isEnabled={enableCustomIndicator}
+          setIsEnabled={setEnableCustomIndicator}
         />
         <Toggle
           title="Indicator pulsating:"

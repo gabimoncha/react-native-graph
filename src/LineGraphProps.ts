@@ -19,7 +19,13 @@ export interface SelectionDotProps {
   circleY: SharedValue<number>
 }
 
-interface BaseLineGraphProps extends ViewProps {
+export interface IndicatorDotProps {
+  isActive: SharedValue<boolean>
+  indicatorX: SharedValue<number>
+  indicatorY: SharedValue<number>
+}
+
+export interface BaseLineGraphProps extends ViewProps {
   /**
    * All points to be marked in the graph. Coordinate system will adjust to scale automatically.
    */
@@ -109,6 +115,11 @@ export type AnimatedLineGraphProps = BaseLineGraphProps & {
    * The element that renders the selection dot
    */
   SelectionDot?: React.ComponentType<SelectionDotProps> | null
+
+  /**
+   * The element that renders the selection dot
+   */
+  IndicatorComponent?: React.ComponentType<IndicatorDotProps> | null
 
   /**
    * The element that gets rendered above the Graph (usually the "max" point/value of the Graph)

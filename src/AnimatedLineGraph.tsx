@@ -68,6 +68,7 @@ export function AnimatedLineGraph({
   onGestureEnd,
   panGestureDelay = 300,
   SelectionDot = DefaultSelectionDot,
+  IndicatorComponent,
   enableIndicator = false,
   indicatorPulsating = false,
   horizontalPadding = enableIndicator
@@ -541,35 +542,42 @@ export function AnimatedLineGraph({
                 />
               )}
 
-              {indicatorVisible && (
-                <Group>
-                  {indicatorPulsating && (
+              {indicatorVisible &&
+                (IndicatorComponent != null ? (
+                  <IndicatorComponent
+                    isActive={isActive}
+                    indicatorX={indicatorX}
+                    indicatorY={indicatorY}
+                  />
+                ) : (
+                  <Group>
+                    {indicatorPulsating && (
+                      <Circle
+                        cx={indicatorX}
+                        cy={indicatorY}
+                        r={indicatorPulseRadius}
+                        opacity={indicatorPulseOpacity}
+                        color={indicatorPulseColor}
+                        style="fill"
+                      />
+                    )}
+
                     <Circle
                       cx={indicatorX}
                       cy={indicatorY}
-                      r={indicatorPulseRadius}
-                      opacity={indicatorPulseOpacity}
-                      color={indicatorPulseColor}
-                      style="fill"
+                      r={indicatorBorderRadius}
+                      color="#ffffff"
+                    >
+                      <Shadow dx={2} dy={2} color="rgba(0,0,0,0.2)" blur={4} />
+                    </Circle>
+                    <Circle
+                      cx={indicatorX}
+                      cy={indicatorY}
+                      r={indicatorRadius}
+                      color={color}
                     />
-                  )}
-
-                  <Circle
-                    cx={indicatorX}
-                    cy={indicatorY}
-                    r={indicatorBorderRadius}
-                    color="#ffffff"
-                  >
-                    <Shadow dx={2} dy={2} color="rgba(0,0,0,0.2)" blur={4} />
-                  </Circle>
-                  <Circle
-                    cx={indicatorX}
-                    cy={indicatorY}
-                    r={indicatorRadius}
-                    color={color}
-                  />
-                </Group>
-              )}
+                  </Group>
+                ))}
             </Canvas>
           </View>
 
