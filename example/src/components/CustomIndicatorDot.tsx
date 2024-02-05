@@ -7,16 +7,16 @@ import {
   withSpring,
 } from 'react-native-reanimated'
 import { Group, RoundedRect, Shadow } from '@shopify/react-native-skia'
-import { IndicatorDotProps } from '../../../src/LineGraphProps'
+import { SelectionDotProps } from '../../../src/LineGraphProps'
 
 const BORDER_SIZE = 20
 const RECT_SIZE = 12
 
 export function IndicatorDot({
   isActive,
-  indicatorX,
-  indicatorY,
-}: IndicatorDotProps): React.ReactElement {
+  circleX,
+  circleY,
+}: SelectionDotProps): React.ReactElement {
   const indicatorOpacity = useSharedValue(1)
 
   const setIsActive = useCallback(
@@ -39,11 +39,11 @@ export function IndicatorDot({
     [isActive, setIsActive]
   )
 
-  const borderX = useDerivedValue(() => indicatorX.value - BORDER_SIZE / 2)
-  const borderY = useDerivedValue(() => indicatorY.value - BORDER_SIZE / 2)
+  const borderX = useDerivedValue(() => circleX.value - BORDER_SIZE / 2)
+  const borderY = useDerivedValue(() => circleY.value - BORDER_SIZE / 2)
 
-  const rectX = useDerivedValue(() => indicatorX.value - RECT_SIZE / 2)
-  const rectY = useDerivedValue(() => indicatorY.value - RECT_SIZE / 2)
+  const rectX = useDerivedValue(() => circleX.value - RECT_SIZE / 2)
+  const rectY = useDerivedValue(() => circleY.value - RECT_SIZE / 2)
 
   return (
     <Group>

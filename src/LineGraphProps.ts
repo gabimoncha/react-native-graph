@@ -14,15 +14,8 @@ export type GraphRange = Partial<GraphPathRange>
 export interface SelectionDotProps {
   isActive: SharedValue<boolean>
   color: BaseLineGraphProps['color']
-  lineThickness: BaseLineGraphProps['lineThickness']
   circleX: SharedValue<number>
   circleY: SharedValue<number>
-}
-
-export interface IndicatorDotProps {
-  isActive: SharedValue<boolean>
-  indicatorX: SharedValue<number>
-  indicatorY: SharedValue<number>
 }
 
 export interface BaseLineGraphProps extends ViewProps {
@@ -119,7 +112,7 @@ export type AnimatedLineGraphProps = BaseLineGraphProps & {
   /**
    * The element that renders the selection dot
    */
-  IndicatorComponent?: React.ComponentType<IndicatorDotProps> | null
+  IndicatorComponent?: React.ComponentType<SelectionDotProps> | null
 
   /**
    * The element that gets rendered above the Graph (usually the "max" point/value of the Graph)

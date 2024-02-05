@@ -536,7 +536,6 @@ export function AnimatedLineGraph({
                 <SelectionDot
                   isActive={isActive}
                   color={color}
-                  lineThickness={lineThickness}
                   circleX={circleX}
                   circleY={circleY}
                 />
@@ -546,8 +545,9 @@ export function AnimatedLineGraph({
                 (IndicatorComponent != null ? (
                   <IndicatorComponent
                     isActive={isActive}
-                    indicatorX={indicatorX}
-                    indicatorY={indicatorY}
+                    color={color}
+                    circleX={indicatorX}
+                    circleY={indicatorY}
                   />
                 ) : (
                   <Group>
