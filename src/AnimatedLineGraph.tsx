@@ -267,7 +267,6 @@ export function AnimatedLineGraph({
       damping: 400,
       velocity: 0,
     })
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     height,

@@ -19,8 +19,8 @@ import React, { useCallback } from 'react'
 import {
   runOnJS,
   useAnimatedReaction,
-  useSharedValue,
   withSpring,
+  useSharedValue,
 } from 'react-native-reanimated'
 import { Circle } from '@shopify/react-native-skia'
 import type { SelectionDotProps } from 'react-native-graph'
