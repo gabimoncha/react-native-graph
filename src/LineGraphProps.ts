@@ -94,7 +94,7 @@ export type AnimatedLineGraphProps = BaseLineGraphProps & {
   /**
    * Called for each point while the user is scrubbing/panning through the graph
    */
-  onPointSelected?: (point: GraphPoint) => void
+  onPointSelected?: (point: GraphPoint, index?: number) => void
   /**
    * Called once the user starts scrubbing/panning through the graph
    */

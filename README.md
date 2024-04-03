@@ -95,7 +95,7 @@ Example:
   color="#4484B2"
   enablePanGesture={true}
   onGestureStart={() => hapticFeedback('impactLight')}
-  onPointSelected={(p) => updatePriceTitle(p)}
+  onPointSelected={(p, idx) => updatePriceTitle(p, idx)}
   onGestureEnd={() => resetPriceTitle()}
 />
 ```
